@@ -15,9 +15,10 @@ class ResizeImage
         $this->imagename = $imagename;
         $this->width = $width;
         $this->height = $height;
+        $this->resize();
     }
 
-    public function resize()
+    private function resize()
     {
         try {
             echo "Resizing to " . $this->width . " x " . $this->height . PHP_EOL;
