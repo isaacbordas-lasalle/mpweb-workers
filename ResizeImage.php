@@ -6,17 +6,15 @@ use \Gumlet\ImageResize;
 
 class ResizeImage
 {
-    private $dispatcher;
     private $imagename;
     private $width;
     private $height;
 
-    public function __construct(string $imagename, int $width, int $height, $dispatcher)
+    public function __construct(string $imagename, int $width, int $height)
     {
         $this->imagename = $imagename;
         $this->width = $width;
         $this->height = $height;
-        $this->dispatcher = $dispatcher;
     }
 
     public function resize()
@@ -29,10 +27,5 @@ class ResizeImage
         } catch (\Gumlet\ImageResizeException $e) {
             echo 'There was a problem resizing image: ' . $e->getMessage();
         }
-
-        echo "Resizing complete. Publishing event" . PHP_EOL;
-		$event = new ResizeImageEvent($this);
-        $this->dispatcher->dispatch(ResizeImageEvent::NAME, $event);        
-        
     }
 }
