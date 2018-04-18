@@ -21,7 +21,6 @@ class ResizeImage
     private function resize()
     {
         try {
-            echo "Resizing to " . $this->width . " x " . $this->height . PHP_EOL;
             $image = new ImageResize('img/original/' . $this->imagename);
             $image->resize($this->width, $this->height);
             $image->save('img/modified/resized_' . $this->width . 'x' . $this->height . '_' . $this->imagename);
